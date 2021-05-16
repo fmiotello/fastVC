@@ -12,11 +12,9 @@ from os.path import exists, join, basename, splitext
 from transformers import Wav2Vec2Tokenizer, Wav2Vec2ForCTC
 from datasets import load_dataset
 
-sys.path.insert(0, './tts')
-
-from tts.synthesizer.inference import Synthesizer
-from tts.encoder import inference as encoder
-from tts.vocoder import inference as vocoder
+from synthesizer.inference import Synthesizer
+from encoder import inference as encoder
+from vocoder import inference as vocoder
 from pathlib import Path
 
 print('[...imports done]')
@@ -29,12 +27,11 @@ print('[Loading models...]')
 tokenizer = Wav2Vec2Tokenizer.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
 model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
 
-encoder.load_model(Path("src/tts/encoder/saved_models/pretrained.pt"))
-synthesizer = Synthesizer(Path("src/tts/synthesizer/saved_models/pretrained/pretrained.pt"))
-vocoder.load_model(Path("src/tts/vocoder/saved_models/pretrained/pretrained.pt"))
+encoder.load_model(Path("src/encoder/saved_models/pretrained.pt"))
+synthesizer = Synthesizer(Path("src/synthesizer/saved_models/pretrained/pretrained.pt"))
+vocoder.load_model(Path("src/vocoder/saved_models/pretrained/pretrained.pt"))
 
 print('[...load done]')
-
 
 ### MAIN ###
 

@@ -1,7 +1,7 @@
 .DS_Store
 env/
-src/tts/encoder/saved_models/*
-src/tts/synthesizer/saved_models/*
-src/tts/vocoder/saved_models/*
+src/encoder/saved_models/*
+src/synthesizer/saved_models/*
+src/vocoder/saved_models/*
 *__pycache__
 *.wav
