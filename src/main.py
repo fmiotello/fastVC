@@ -19,6 +19,8 @@ from pathlib import Path
 import argparse
 from utils.argutils import print_args
 
+import jiwer
+
 print('[...imports done]')
 
 
@@ -46,13 +48,13 @@ def listToString(s):
     return str1
 
 def synthesize(embed, text):
-  print('[Synthesizing new audio...]')
-  #with io.capture_output() as captured:
-  specs = synthesizer.synthesize_spectrograms([text], [embed])
-  generated_wav = vocoder.infer_waveform(specs[0])
-  generated_wav = np.pad(generated_wav, (0, synthesizer.sample_rate), mode="constant")
-  print('\n[...synthesis done]')
-  return generated_wav
+    print('[Synthesizing new audio...]')
+    #with io.capture_output() as captured:
+    specs = synthesizer.synthesize_spectrograms([text], [embed])
+    generated_wav = vocoder.infer_waveform(specs[0])
+    generated_wav = np.pad(generated_wav, (0, synthesizer.sample_rate), mode="constant")
+    print('\n[...synthesis done]')
+    return generated_wav
 
 ### MAIN ###
 
@@ -70,6 +72,8 @@ if __name__ == '__main__':
         "Sentence used by the synthesized voice.")
     parser.add_argument("--seed", type=int, default=None, help=\
         "Optional random number seed value to make toolbox deterministic.")
+    parser.add_argument("-m", "--metrics", action="store_true", help=\
+        "Print some metrics.")
 
     args = parser.parse_args()
     print_args(args, parser)
@@ -105,3 +109,25 @@ if __name__ == '__main__':
 
     out_audio = synthesize(embedding, text)
     sf.write('audio/audio_out.wav', out_audio, 16000)
+
+    if args.metrics:
+        input_values = tokenizer(np.asarray(out_audio), return_tensors="pt").input_values
+        logits = model(input_values).logits
+        predicted_ids = torch.argmax(logits, dim=-1)
+        transcription_out = tokenizer.batch_decode(predicted_ids)
+        text_out = listToString(transcription_out)
+
+        print('Detected sentence: ' + text_out)
+
+        ground_truth = text
+        hypothesis = text_out
+
+        wer = jiwer.wer(ground_truth, hypothesis)  #word error rate
+        mer = jiwer.mer(ground_truth, hypothesis)  #match error rate
+        wil = jiwer.wil(ground_truth, hypothesis)  #word information lost
+
+        print('\n[---METRICS---]\n')
+
+        print('Word Error Rate is', wer)
+        print('Match Error Rate is', mer)
+        print('Word Information Lost is', wil)

@@ -14,6 +14,7 @@ fsspec
 huggingface-hub
 idna
 inflect
+jiwer
 joblib
 jsonpatch
 jsonpointer
