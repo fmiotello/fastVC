@@ -2,6 +2,7 @@
 env/
 *__pycache__
 *.wav
+old_requirements.txt
 !src/audio/*.wav
 src/samples
 src/encoder/saved_models/*

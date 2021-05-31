@@ -20,6 +20,7 @@ import argparse
 from utils.argutils import print_args
 
 import jiwer
+import speechmetrics
 
 ### STD OUT SUPPRESSION UTILITY ###
 
@@ -148,6 +149,12 @@ if __name__ == '__main__':
         mer = jiwer.mer(ground_truth, hypothesis)  #match error rate
         wil = jiwer.wil(ground_truth, hypothesis)  #word information lost
 
+        #mosnet
+
+        window_length = None
+        metrics = speechmetrics.load('absolute.mosnet',window_length)
+        results = metrics("src/audio/audio_out.wav")
+
         print('\n\n[+++METRICS+++]\n')
 
         print('Detected text: ' + text_out)
@@ -155,6 +162,7 @@ if __name__ == '__main__':
         print('\nWord Error Rate is: ', wer)
         print('Match Error Rate is: ', mer)
         print('Word Information Lost is: ', wil)
+        print('MOSNet is: ', results['mosnet'][0][0])
         print('\n[Done]\n')
     else:
         print('\n[Done]\n')
