@@ -64,8 +64,8 @@ class Synthesizer:
         self._model.load(self.model_fpath)
         self._model.eval()
 
-        if self.verbose:
-            print("Loaded synthesizer \"%s\" trained to step %d" % (self.model_fpath.name, self._model.state_dict()["step"]))
+        #if self.verbose:
+        #    print("Loaded synthesizer \"%s\" trained to step %d" % (self.model_fpath.name, self._model.state_dict()["step"]))
 
     def synthesize_spectrograms(self, texts: List[str],
                                 embeddings: Union[np.ndarray, List[np.ndarray]],
@@ -86,10 +86,9 @@ class Synthesizer:
             self.load()
 
             # Print some info about the model when it is loaded
-            tts_k = self._model.get_step() // 1000
+            #tts_k = self._model.get_step() // 1000
 
-            simple_table([("Tacotron", str(tts_k) + "k"),
-                        ("r", self._model.r)])
+            #simple_table([("Tacotron", str(tts_k) + "k"), ("r", self._model.r)])
 
         # Preprocess text inputs
         inputs = [text_to_sequence(text.strip(), hparams.tts_cleaner_names) for text in texts]
@@ -129,8 +128,8 @@ class Synthesizer:
                     m = m[:, :-1]
                 specs.append(m)
 
-        if self.verbose:
-            print("\n\nDone.\n")
+        #if self.verbose:
+        #    print("\n\nDone.\n")
         return (specs, alignments) if return_alignments else specs
 
     @staticmethod

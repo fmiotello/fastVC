@@ -326,7 +326,7 @@ class Decoder(nn.Module):
 
 
 class Tacotron(nn.Module):
-    def __init__(self, embed_dims, num_chars, encoder_dims, decoder_dims, n_mels, 
+    def __init__(self, embed_dims, num_chars, encoder_dims, decoder_dims, n_mels,
                  fft_bins, postnet_dims, encoder_K, lstm_dims, postnet_K, num_highways,
                  dropout, stop_threshold, speaker_embedding_size):
         super().__init__()
@@ -345,7 +345,7 @@ class Tacotron(nn.Module):
         self.post_proj = nn.Linear(postnet_dims, fft_bins, bias=False)
 
         self.init_model()
-        self.num_params()
+        self.num_params(print_out=False)
 
         self.register_buffer("step", torch.zeros(1, dtype=torch.long))
         self.register_buffer("stop_threshold", torch.tensor(stop_threshold, dtype=torch.float32))
