@@ -111,12 +111,12 @@ if __name__ == '__main__':
     if args.source is not None:
         source_audio, _ = librosa.load(args.source, sr=SAMPLE_RATE)
     else:
-        source_audio, _ = librosa.load("audio/source.wav", sr=SAMPLE_RATE)
+        source_audio, _ = librosa.load("src/audio/source.wav", sr=SAMPLE_RATE)
 
     if args.target is not None:
         target_audio, _ = librosa.load(args.target, sr=SAMPLE_RATE)
     else:
-        target_audio, _ = librosa.load("audio/target.wav", sr=SAMPLE_RATE)
+        target_audio, _ = librosa.load("src/audio/target.wav", sr=SAMPLE_RATE)
 
     if args.string is not None:
         if args.source is not None:
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     embedding = encoder.embed_utterance(encoder.preprocess_wav(target_audio, SAMPLE_RATE))
 
     out_audio = synthesize(embedding, text)
-    sf.write('audio/audio_out.wav', out_audio, 16000)
+    sf.write('src/audio/audio_out.wav', out_audio, 16000)
 
     if args.metrics:
         input_values = tokenizer(np.asarray(out_audio), return_tensors="pt").input_values
