@@ -152,7 +152,8 @@ if __name__ == '__main__':
         #mosnet
 
         window_length = None
-        metrics = speechmetrics.load('absolute.mosnet',window_length)
+        with suppress_output(suppress_stdout=True, suppress_stderr=True):
+            metrics = speechmetrics.load('absolute.mosnet',window_length)
         results = metrics("src/audio/audio_out.wav")
 
         print('\n\n[+++METRICS+++]\n')
