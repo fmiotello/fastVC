@@ -14,6 +14,7 @@ from datasets import load_dataset
 
 from synthesizer.inference import Synthesizer
 from encoder import inference as encoder
+from encoder.audio import preprocess_wav
 from vocoder import inference as vocoder
 from pathlib import Path
 import argparse
@@ -107,6 +108,8 @@ if __name__ == '__main__':
         "Optional random number seed value to make toolbox deterministic.")
     parser.add_argument("-m", "--metrics", action="store_true", help=\
         "Print some metrics.")
+    parser.add_argument("-e", "--enhance", action="store_true", help=\
+        "Trims output audio silences.")
 
     args = parser.parse_args()
     # print_args(args, parser)
@@ -140,6 +143,9 @@ if __name__ == '__main__':
     embedding = encoder.embed_utterance(encoder.preprocess_wav(target_audio, SAMPLE_RATE))
 
     out_audio = synthesize(embedding, text)
+    if args.enhance:
+        out_audio = preprocess_wav(out_audio)
+
     sf.write(dir + "/audio/audio_out.wav", out_audio, 16000)
 
     if args.metrics:
