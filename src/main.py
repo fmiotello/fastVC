@@ -21,6 +21,8 @@ from utils.argutils import print_args
 
 import jiwer
 import speechmetrics
+from asrtoolkit import cer
+import nltk
 
 ### STD OUT SUPPRESSION UTILITY ###
 
@@ -49,8 +51,12 @@ class suppress_output:
 
 
 ### MODELS DOWNLOAD ###
-
 print('[Loading models...]')
+
+dir = os.getcwd()
+if os.path.basename(os.path.normpath(dir)) != "src":
+    dir += "/src"
+
 
 logging.set_verbosity_error()
 
@@ -58,9 +64,9 @@ with suppress_output(suppress_stdout=True, suppress_stderr=True):
     tokenizer = Wav2Vec2Tokenizer.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
     model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-large-960h-lv60-self")
 
-    encoder.load_model(Path("src/encoder/saved_models/pretrained.pt"))
-    synthesizer = Synthesizer(Path("src/synthesizer/saved_models/pretrained/pretrained.pt"))
-    vocoder.load_model(Path("src/vocoder/saved_models/pretrained/pretrained.pt"))
+    encoder.load_model(Path(dir + "/encoder/saved_models/pretrained.pt"))
+    synthesizer = Synthesizer(Path(dir + "/synthesizer/saved_models/pretrained/pretrained.pt"))
+    vocoder.load_model(Path(dir + "/vocoder/saved_models/pretrained/pretrained.pt"))
 
 ### FUNCTIONS and GLOBAL VARIABLES ###
 
@@ -112,17 +118,18 @@ if __name__ == '__main__':
     if args.source is not None:
         source_audio, _ = librosa.load(args.source, sr=SAMPLE_RATE)
     else:
-        source_audio, _ = librosa.load("src/audio/source.wav", sr=SAMPLE_RATE)
+        source_audio, _ = librosa.load(dir + "/audio/source.wav", sr=SAMPLE_RATE)
 
     if args.target is not None:
         target_audio, _ = librosa.load(args.target, sr=SAMPLE_RATE)
     else:
-        target_audio, _ = librosa.load("src/audio/target.wav", sr=SAMPLE_RATE)
+        target_audio, _ = librosa.load(dir + "/audio/target.wav", sr=SAMPLE_RATE)
 
     if args.string is not None:
         if args.source is not None:
             raise Exception("[ERROR] Can't specify both source and string args.")
-        text = args.string
+        transcription = list(args.string.split(" "))
+        text = listToString(transcription)
     else:
         input_values = tokenizer(np.asarray(source_audio), return_tensors="pt").input_values
         logits = model(input_values).logits
@@ -133,7 +140,7 @@ if __name__ == '__main__':
     embedding = encoder.embed_utterance(encoder.preprocess_wav(target_audio, SAMPLE_RATE))
 
     out_audio = synthesize(embedding, text)
-    sf.write('src/audio/audio_out.wav', out_audio, 16000)
+    sf.write(dir + "/audio/audio_out.wav", out_audio, 16000)
 
     if args.metrics:
         input_values = tokenizer(np.asarray(out_audio), return_tensors="pt").input_values
@@ -145,7 +152,20 @@ if __name__ == '__main__':
         ground_truth = text
         hypothesis = text_out
 
-        wer = jiwer.wer(ground_truth, hypothesis)  #word error rate
+        wer_before_lemma = jiwer.wer(ground_truth, hypothesis)  #word error rate
+
+        print('\n')
+        nltk.download('wordnet')
+        wnl = nltk.stem.WordNetLemmatizer()
+
+        for s in transcription:
+            s = wnl.lemmatize(s)
+
+        for s in transcription_out:
+            s = wnl.lemmatize(s)
+
+        wer_after_lemma = jiwer.wer(listToString(transcription), listToString(transcription_out))
+        cer = cer(ground_truth, hypothesis)        #character error rate
         mer = jiwer.mer(ground_truth, hypothesis)  #match error rate
         wil = jiwer.wil(ground_truth, hypothesis)  #word information lost
 
@@ -154,15 +174,20 @@ if __name__ == '__main__':
         window_length = None
         with suppress_output(suppress_stdout=True, suppress_stderr=True):
             metrics = speechmetrics.load('absolute.mosnet',window_length)
-        results = metrics("src/audio/audio_out.wav")
+        results = metrics(dir + "/audio/audio_out.wav")
 
         print('\n\n[+++METRICS+++]\n')
 
         print('Detected text: ' + text_out)
 
-        print('\nWord Error Rate is: ', wer)
-        print('Match Error Rate is: ', mer)
-        print('Word Information Lost is: ', wil)
+        #print('Original text lemmatized: ' + listToString(transcription))
+        #print('Synthesized text lemmatized: ' + listToString(transcription_out))
+
+        print('\nWord Error Rate before lemmatization is: ', wer_before_lemma)
+        print('Word Error Rate after lemmatization is: ', wer_after_lemma)
+        print('Character Error Rate is: ', cer/100)
+        #print('Match Error Rate is: ', mer)
+        #print('Word Information Lost is: ', wil)
         print('MOSNet is: ', results['mosnet'][0][0])
         print('\n[Done]\n')
     else:
