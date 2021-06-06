@@ -9,4 +9,4 @@ I'm using `python 3.9.4`
 2. Upgrade pip: `python -m pip install --upgrade pip`
 3. Install dependencies: `python -m pip install -r requirements.txt`
 4. Download the [pretrained models](https://github.com/CorentinJ/Real-Time-Voice-Cloning/wiki/Pretrained-models) and put them in the correct directories
-5. Run the script: `python src/main.py`
+5. Run the script: `python src/main.py` (use `--help` for displaying available options)
