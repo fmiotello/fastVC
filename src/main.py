@@ -73,11 +73,11 @@ with suppress_output(suppress_stdout=True, suppress_stderr=True):
 
 SAMPLE_RATE = 16000
 
-def listToString(s):
-    str1 = ""
-    for ele in s:
-        str1 += ele
-    return str1
+# def listToString(s):
+#     str1 = ""
+#     for ele in s:
+#         str1 += ele
+#     return str1
 
 def synthesize(embed, text):
     print('[Synthesizing new audio...]')
@@ -132,17 +132,17 @@ if __name__ == '__main__':
         if args.source is not None:
             raise Exception("[ERROR] Can't specify both source and string args.")
         transcription = list(args.string.split(" "))
-        text = listToString(transcription)
+        # text = listToString(transcription)
     else:
         input_values = tokenizer(np.asarray(source_audio), return_tensors="pt").input_values
         logits = model(input_values).logits
         predicted_ids = torch.argmax(logits, dim=-1)
         transcription = tokenizer.batch_decode(predicted_ids)
-        text = listToString(transcription)
+        # text = listToString(transcription)
 
     embedding = encoder.embed_utterance(encoder.preprocess_wav(target_audio, SAMPLE_RATE))
 
-    out_audio = synthesize(embedding, text)
+    out_audio = synthesize(embedding, transcription[0])
     if args.enhance:
         out_audio = preprocess_wav(out_audio)
 
@@ -153,24 +153,29 @@ if __name__ == '__main__':
         logits = model(input_values).logits
         predicted_ids = torch.argmax(logits, dim=-1)
         transcription_out = tokenizer.batch_decode(predicted_ids)
-        text_out = listToString(transcription_out)
+        # text_out = listToString(transcription_out)
 
-        ground_truth = text
-        hypothesis = text_out
+        ground_truth = transcription[0]
+        hypothesis = transcription_out[0]
 
         wer_before_lemma = jiwer.wer(ground_truth, hypothesis)  #word error rate
 
         print('\n')
+
         nltk.download('wordnet')
         wnl = nltk.stem.WordNetLemmatizer()
+        stm = nltk.stem.snowball.EnglishStemmer()
 
-        for s in transcription:
-            s = wnl.lemmatize(s)
+        transcription_lemma = ""
+        transcription_out_lemma = ""
 
-        for s in transcription_out:
-            s = wnl.lemmatize(s)
+        for s in transcription[0].split(" "):
+            transcription_lemma += (stm.stem(wnl.lemmatize(s)) + " ").upper()
 
-        wer_after_lemma = jiwer.wer(listToString(transcription), listToString(transcription_out))
+        for s in transcription_out[0].split(" "):
+            transcription_out_lemma += (stm.stem(wnl.lemmatize(s)) + " ").upper()
+
+        wer_after_lemma = jiwer.wer(transcription_lemma, transcription_out_lemma)
         cer = cer(ground_truth, hypothesis)        #character error rate
         mer = jiwer.mer(ground_truth, hypothesis)  #match error rate
         wil = jiwer.wil(ground_truth, hypothesis)  #word information lost
@@ -184,10 +189,10 @@ if __name__ == '__main__':
 
         print('\n\n[+++METRICS+++]\n')
 
-        print('Detected text: ' + text_out)
+        print('Detected text: ' + transcription_out[0])
 
-        #print('Original text lemmatized: ' + listToString(transcription))
-        #print('Synthesized text lemmatized: ' + listToString(transcription_out))
+        print('Original text lemmatized: ' + transcription_lemma)
+        print('Synthesized text lemmatized: ' + transcription_out_lemma)
 
         print('\nWord Error Rate before lemmatization is: ', wer_before_lemma)
         print('Word Error Rate after lemmatization is: ', wer_after_lemma)
