@@ -5,8 +5,8 @@ env/
 old_requirements.txt
 !src/audio/*.wav
 src/samples
-src/encoder/saved_models/*
-src/synthesizer/saved_models/*
+src/encoder/saved_models/pretrained.pt
+src/synthesizer/saved_models/pretrained/pretrained.pt
 src/toolbox
 
 src/demo*
@@ -17,6 +17,6 @@ src/requirements.txt
 src/synthesizer_train.py
 src/synthesizer_preprocess_audio.py
 src/synthesizer_preprocess_embeds.py
-src/vocoder/saved_models/*
+src/vocoder/saved_models/pretrained/pretrained.pt
 src/vocoder_train.py
 src/vocoder_preprocess.py
