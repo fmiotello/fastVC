@@ -131,18 +131,18 @@ if __name__ == '__main__':
     if args.string is not None:
         if args.source is not None:
             raise Exception("[ERROR] Can't specify both source and string args.")
-        transcription = list(args.string.split(" "))
+        transcription = args.string
         # text = listToString(transcription)
     else:
         input_values = tokenizer(np.asarray(source_audio), return_tensors="pt").input_values
         logits = model(input_values).logits
         predicted_ids = torch.argmax(logits, dim=-1)
-        transcription = tokenizer.batch_decode(predicted_ids)
+        transcription = tokenizer.batch_decode(predicted_ids)[0]
         # text = listToString(transcription)
 
     embedding = encoder.embed_utterance(encoder.preprocess_wav(target_audio, SAMPLE_RATE))
 
-    out_audio = synthesize(embedding, transcription[0])
+    out_audio = synthesize(embedding, transcription)
     if args.enhance:
         out_audio = preprocess_wav(out_audio)
 
@@ -152,11 +152,11 @@ if __name__ == '__main__':
         input_values = tokenizer(np.asarray(out_audio), return_tensors="pt").input_values
         logits = model(input_values).logits
         predicted_ids = torch.argmax(logits, dim=-1)
-        transcription_out = tokenizer.batch_decode(predicted_ids)
+        transcription_out = tokenizer.batch_decode(predicted_ids)[0]
         # text_out = listToString(transcription_out)
 
-        ground_truth = transcription[0]
-        hypothesis = transcription_out[0]
+        ground_truth = transcription
+        hypothesis = transcription_out
 
         wer_before_lemma = jiwer.wer(ground_truth, hypothesis)  #word error rate
 
@@ -169,10 +169,10 @@ if __name__ == '__main__':
         transcription_lemma = ""
         transcription_out_lemma = ""
 
-        for s in transcription[0].split(" "):
+        for s in transcription.split(" "):
             transcription_lemma += (stm.stem(wnl.lemmatize(s)) + " ").upper()
 
-        for s in transcription_out[0].split(" "):
+        for s in transcription_out.split(" "):
             transcription_out_lemma += (stm.stem(wnl.lemmatize(s)) + " ").upper()
 
         wer_after_lemma = jiwer.wer(transcription_lemma, transcription_out_lemma)
@@ -189,7 +189,7 @@ if __name__ == '__main__':
 
         print('\n\n[+++METRICS+++]\n')
 
-        print('Detected text: ' + transcription_out[0])
+        print('Detected text: ' + transcription_out)
 
         print('Original text lemmatized: ' + transcription_lemma)
         print('Synthesized text lemmatized: ' + transcription_out_lemma)
