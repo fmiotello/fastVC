@@ -5,9 +5,11 @@ FastVC
 ## Overview
 
 FastVC is a fast and efficient, *non-parallel* and *any-to-any* *voice conversion (VC)* tool. Our tool exploits the task by cascading an *Automatic Speech Recognition (ASR)* model and a *Text To Speech (TTS)* model.
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/17434626/122647192-44026400-d123-11eb-9b56-305b312744d7.png" width="85%"//>
 </p>
+
 The ASR is based on [Wav2vec 2.0](https://arxiv.org/pdf/2006.11477.pdf) and is used to transcribe the speech from a *source speaker*. The TTS is based on [SV2TTS](https://arxiv.org/pdf/1806.04558.pdf) and is used to generate the output speech from a *target speaker* embedding.
 
 For a more detailed explanation checkout [the paper of our project]().
