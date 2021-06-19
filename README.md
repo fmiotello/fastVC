@@ -29,6 +29,8 @@ The software was implemented using `python 3.9.4`
   ````
 5. Run the main script: `python src/main.py` (use `--help` for displaying available options)
 
+More instructions can be found [here](https://github.com/fmiotello/fastVC/tree/main/src).
+
 ## Notes
 
 This application was developed as a project for the "Project Course" at [Politecnico di Milano](https://www.polimi.it/en/) (MSc in Music and Acoustic Engineering).
