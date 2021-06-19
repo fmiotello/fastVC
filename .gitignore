@@ -1,5 +1,6 @@
 .DS_Store
 env/
+LICENSE.txt
 *__pycache__
 *.wav
 old_requirements.txt
@@ -20,3 +21,19 @@ src/synthesizer_preprocess_embeds.py
 src/vocoder/saved_models/pretrained/pretrained.pt
 src/vocoder_train.py
 src/vocoder_preprocess.py
+
+src/vocoder/train.py
+src/vocoder/vocoder_dataset.py
+src/vocoder/gen_wavernn.py
+src/vocoder/models/deepmind_version.py
+
+src/synthesizer/preprocess.py
+src/synthesizer/synthesize.py
+src/synthesizer/synthesizer_dataset.py
+src/synthesizer/train.py
+
+src/encoder/preprocess.py
+src/encoder/train.py
+src/encoder/visualizations.py
+src/encoder/config.py
+src/encoder/data_objects
