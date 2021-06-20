@@ -1,6 +1,5 @@
 ---
 layout: default
----
 <a href="" class="btn">Paper</a>
 ---
 ## Abstract
