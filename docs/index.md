@@ -11,9 +11,20 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 
 ### Class 1
 
-<audio src="audio/source.wav" controls preload>Source speaker</audio>
-<audio src="audio/target.wav" controls preload>Target speaker</audio>
-<audio src="audio/audio_out.wav" controls preload>Output</audio>
+<div class="container">
+   <div class="column-center">
+     <h6>Source speaker</h6>
+     <audio src="audio/source.wav" controls preload></audio>
+   </div>
+   <div class="column-left">
+     <h6>Target speaker</h6>
+     <audio src="audio/target.wav" controls preload></audio>
+   </div>
+   <div class="column-right">
+     <h6>Output</h6>
+     <audio src="audio/audio_out.wav" controls preload></audio>
+   </div>
+</div>
 
 ### Class 2
 
