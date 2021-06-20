@@ -27,7 +27,7 @@ The software was implemented using `python 3.9.4`
   src/synthesizer/saved_models/pretrained/pretrained.pt
   src/vocoder/saved_models/pretrained/pretrained.pt
   ````
-5. Run the main script: `python src/main.py` (use `--help` for displaying available options)
+5. Run the main script: `python src/main.py` (use `--help` for displaying available options). The output audio will be `src/audio/audio_out.wav`.
 
 More instructions can be found [here](https://github.com/fmiotello/fastVC/tree/main/src).
 
