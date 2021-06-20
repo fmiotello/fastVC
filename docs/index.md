@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Fast VC
 ---
 
 ## Abstract
@@ -10,9 +11,9 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 
 ### Class 1
 
-<audio src="audio/source.wav" controls preload></audio>
-<audio src="audio/target.wav" controls preload></audio>
-<audio src="audio/audio_out.wav" controls preload></audio>
+<audio src="audio/source.wav" controls preload>Source speaker</audio>
+<audio src="audio/target.wav" controls preload>Target speaker</audio>
+<audio src="audio/audio_out.wav" controls preload>Output</audio>
 
 ### Class 2
 
