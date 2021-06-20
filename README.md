@@ -4,10 +4,10 @@ FastVC
 
 ## Overview
 
-FastVC is a fast and efficient, *non-parallel* and *any-to-any* *voice conversion (VC)* tool. Our tool exploits the task by cascading an *Automatic Speech Recognition (ASR)* model and a *Text To Speech (TTS)* model.
+FastVC is a fast and efficient, *non-parallel* and *any-to-any* *voice conversion (VC)* tool. VC involves the modification of the voice of a *source speaker* and make it sound like that of a *target speaker*, without changing the linguistic content of the sentence. Our tool exploits the task by cascading an *Automatic Speech Recognition (ASR)* model and a *Text To Speech (TTS)* model.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/17434626/122647192-44026400-d123-11eb-9b56-305b312744d7.png" width="85%"//>
+  <img src="https://user-images.githubusercontent.com/17434626/122674111-014c9480-d1d4-11eb-9310-0b50250caeab.png" width="85%"//>
 </p>
 
 The ASR is based on [Wav2vec 2.0](https://arxiv.org/pdf/2006.11477.pdf) and is used to transcribe the speech from a *source speaker*. The TTS is based on [SV2TTS](https://arxiv.org/pdf/1806.04558.pdf) and is used to generate the output speech from a *target speaker* embedding.
@@ -27,7 +27,7 @@ The software was implemented using `python 3.9.4`
   src/synthesizer/saved_models/pretrained/pretrained.pt
   src/vocoder/saved_models/pretrained/pretrained.pt
   ````
-5. Run the main script: `python src/main.py` (use `--help` for displaying available options). The output audio will be `src/audio/audio_out.wav`.
+5. Run the main script: `python src/main.py` (use `--help` for displaying available options). The output audio will be in `./src/audio/audio_out.wav`.
 
 More instructions can be found [here](https://github.com/fmiotello/fastVC/tree/main/src).
 
