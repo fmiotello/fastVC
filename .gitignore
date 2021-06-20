@@ -5,6 +5,7 @@ LICENSE.txt
 *.wav
 old_requirements.txt
 !src/audio/*.wav
+!docs/audio/*.wav
 src/samples
 src/encoder/saved_models/pretrained.pt
 src/synthesizer/saved_models/pretrained/pretrained.pt
