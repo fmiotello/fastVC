@@ -14,15 +14,15 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 <div class="container">
    <div class="column-left">
      <h6>Source speaker</h6>
-     <audio src="audio/source.wav" controls preload></audio>
+     <audio src="audio/class_1_target.wav" controls preload></audio>
    </div>
    <div class="column-center">
      <h6>Target speaker</h6>
-     <audio src="audio/target.wav" controls preload></audio>
+     <audio src="audio/class_1_target.wav" controls preload></audio>
    </div>
    <div class="column-right">
      <h6>Output</h6>
-     <audio src="audio/audio_out.wav" controls preload></audio>
+     <audio src="audio/class_1_output.wav" controls preload></audio>
    </div>
 </div>
 
@@ -31,15 +31,15 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 <div class="container">
    <div class="column-left">
      <h6>Source speaker</h6>
-     <audio src="audio/source.wav" controls preload></audio>
+     <audio src="audio/class_2_source.wav" controls preload></audio>
    </div>
    <div class="column-center">
      <h6>Target speaker</h6>
-     <audio src="audio/target.wav" controls preload></audio>
+     <audio src="audio/class_2_target.wav" controls preload></audio>
    </div>
    <div class="column-right">
      <h6>Output</h6>
-     <audio src="audio/audio_out.wav" controls preload></audio>
+     <audio src="audio/class_2_output.wav" controls preload></audio>
    </div>
 </div>
 
@@ -48,15 +48,15 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 <div class="container">
    <div class="column-left">
      <h6>Source speaker</h6>
-     <audio src="audio/source.wav" controls preload></audio>
+     <audio src="audio/class_3_source.wav" controls preload></audio>
    </div>
    <div class="column-center">
      <h6>Target speaker</h6>
-     <audio src="audio/target.wav" controls preload></audio>
+     <audio src="audio/class_3_target.wav" controls preload></audio>
    </div>
    <div class="column-right">
      <h6>Output</h6>
-     <audio src="audio/audio_out.wav" controls preload></audio>
+     <audio src="audio/class_3_output.wav" controls preload></audio>
    </div>
 </div>
 
@@ -65,15 +65,15 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 <div class="container">
    <div class="column-left">
      <h6>Source speaker</h6>
-     <audio src="audio/source.wav" controls preload></audio>
+     <audio src="audio/class_4_source.wav" controls preload></audio>
    </div>
    <div class="column-center">
      <h6>Target speaker</h6>
-     <audio src="audio/target.wav" controls preload></audio>
+     <audio src="audio/class_4_target.wav" controls preload></audio>
    </div>
    <div class="column-right">
      <h6>Output</h6>
-     <audio src="audio/audio_out.wav" controls preload></audio>
+     <audio src="audio/class_4_output.wav" controls preload></audio>
    </div>
 </div>
 
@@ -82,14 +82,14 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 <div class="container">
    <div class="column-left">
      <h6>Source speaker</h6>
-     <audio src="audio/source.wav" controls preload></audio>
+     <audio src="audio/class_5_source.wav" controls preload></audio>
    </div>
    <div class="column-center">
      <h6>Target speaker</h6>
-     <audio src="audio/target.wav" controls preload></audio>
+     <audio src="audio/class_5_target.wav" controls preload></audio>
    </div>
    <div class="column-right">
      <h6>Output</h6>
-     <audio src="audio/audio_out.wav" controls preload></audio>
+     <audio src="audio/class_5_output.wav" controls preload></audio>
    </div>
 </div>
