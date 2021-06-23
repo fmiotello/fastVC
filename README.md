@@ -24,9 +24,9 @@ The software was implemented using `python 3.9.4`
 4. Install dependencies: `python -m pip install -r requirements.txt`
 5. Download the [pretrained models](https://github.com/blue-fish/Real-Time-Voice-Cloning/releases/download/v1.0/pretrained.zip) and put them in the correct directories:
   ````
-  src/encoder/saved_models/pretrained.pt
-  src/synthesizer/saved_models/pretrained/pretrained.pt
-  src/vocoder/saved_models/pretrained/pretrained.pt
+  ./src/encoder/saved_models/pretrained.pt
+  ./src/synthesizer/saved_models/pretrained/pretrained.pt
+  ./src/vocoder/saved_models/pretrained/pretrained.pt
   ````
 6. Run the main script: `python src/main.py` (use `--help` for displaying available options). The output audio will be `./src/audio/audio_out.wav`.
 
