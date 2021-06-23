@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
     if args.seed is not None:
         torch.manual_seed(args.seed)
-        synthesizer = Synthesizer(args.syn_model_fpath, verbose=False)
+        #synthesizer = Synthesizer(args.syn_model_fpath, verbose=False)
 
     if args.source is not None:
         source_audio, _ = librosa.load(args.source, sr=SAMPLE_RATE)
