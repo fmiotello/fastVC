@@ -4,8 +4,8 @@ For the computation of relevant metrics we used some classic NLP libraries: [NLT
 
 ## Source code organization
 `main.py` is the main script. This can be executed as a command line tool using `python main.py` (or `src/main.py` from outside this directory) with some options:
-- `--source`: specify source speaker path (otherwise the default source speaker located in `./audio` will be used)
-- `--target`: specify target speaker path (otherwise the default target speaker located in `./audio` will be used)
+- `--source`: specify source speaker path (otherwise the default source speaker `./audio/source.wav` will be used)
+- `--target`: specify target speaker path (otherwise the default target speaker `./audio/target.wav` will be used)
 - `--string`: choose the string to give as input to the tts 
 - `--seed`: random number seed to make the output deterministic
 - `--metrics`: print relevant metrics
