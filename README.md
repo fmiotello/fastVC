@@ -18,16 +18,17 @@ For a more detailed explanation checkout [the paper of our project](). A demo pa
 
 The software was implemented using `python 3.9.4`
 
-1. (*optional*) Create virtual env and activate it: `python -m venv env` and `source env/bin/activate` (if using macOS/Linux) or `.\env\Scripts\activate` (if using Windows)
-2. Upgrade pip: `python -m pip install --upgrade pip`
-3. Install dependencies: `python -m pip install -r requirements.txt`
-4. Download the [pretrained models](https://github.com/blue-fish/Real-Time-Voice-Cloning/releases/download/v1.0/pretrained.zip) and put them in the correct directories:
+1. Clone the repository (`git clone https://github.com/fmiotello/fastVC.git`) and enter the directory (`cd fastVC`) 
+2. (*optional*) Create virtual env and activate it: `python -m venv env` and `source env/bin/activate` (if using macOS/Linux) or `.\env\Scripts\activate` (if using Windows)
+3. Upgrade pip: `python -m pip install --upgrade pip`
+4. Install dependencies: `python -m pip install -r requirements.txt`
+5. Download the [pretrained models](https://github.com/blue-fish/Real-Time-Voice-Cloning/releases/download/v1.0/pretrained.zip) and put them in the correct directories:
   ````
   src/encoder/saved_models/pretrained.pt
   src/synthesizer/saved_models/pretrained/pretrained.pt
   src/vocoder/saved_models/pretrained/pretrained.pt
   ````
-5. Run the main script: `python src/main.py` (use `--help` for displaying available options). The output audio will be `./src/audio/audio_out.wav`.
+6. Run the main script: `python src/main.py` (use `--help` for displaying available options). The output audio will be `./src/audio/audio_out.wav`.
 
 More instructions can be found [here](https://github.com/fmiotello/fastVC/tree/main/src).
 
