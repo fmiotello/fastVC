@@ -14,40 +14,6 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
 <div class="container">
    <div class="column-left">
      <h6>Source speaker</h6>
-     <audio src="audio/class_1_target.wav" controls preload></audio>
-   </div>
-   <div class="column-center">
-     <h6>Target speaker</h6>
-     <audio src="audio/class_1_target.wav" controls preload></audio>
-   </div>
-   <div class="column-right">
-     <h6>Output</h6>
-     <audio src="audio/class_1_output.wav" controls preload></audio>
-   </div>
-</div>
-
-### Class 2
-
-<div class="container">
-   <div class="column-left">
-     <h6>Source speaker</h6>
-     <audio src="audio/class_2_source.wav" controls preload></audio>
-   </div>
-   <div class="column-center">
-     <h6>Target speaker</h6>
-     <audio src="audio/class_2_target.wav" controls preload></audio>
-   </div>
-   <div class="column-right">
-     <h6>Output</h6>
-     <audio src="audio/class_2_output.wav" controls preload></audio>
-   </div>
-</div>
-
-### Class 3
-
-<div class="container">
-   <div class="column-left">
-     <h6>Source speaker</h6>
      <audio src="audio/class_3_source.wav" controls preload></audio>
    </div>
    <div class="column-center">
@@ -60,7 +26,7 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
    </div>
 </div>
 
-### Class 4
+### Class 2
 
 <div class="container">
    <div class="column-left">
@@ -77,7 +43,7 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
    </div>
 </div>
 
-### Class 5
+### Class 3
 
 <div class="container">
    <div class="column-left">
@@ -91,5 +57,39 @@ Current state-of-the-art *voice conversion (VC)* tools rely their power on neura
    <div class="column-right">
      <h6>Output</h6>
      <audio src="audio/class_5_output.wav" controls preload></audio>
+   </div>
+</div>
+
+### Class 4
+
+<div class="container">
+   <div class="column-left">
+     <h6>Source speaker</h6>
+     <audio src="audio/class_1_source.wav" controls preload></audio>
+   </div>
+   <div class="column-center">
+     <h6>Target speaker</h6>
+     <audio src="audio/class_1_target.wav" controls preload></audio>
+   </div>
+   <div class="column-right">
+     <h6>Output</h6>
+     <audio src="audio/class_1_output.wav" controls preload></audio>
+   </div>
+</div>
+
+### Class 5
+
+<div class="container">
+   <div class="column-left">
+     <h6>Source speaker</h6>
+     <audio src="audio/class_2_source.wav" controls preload></audio>
+   </div>
+   <div class="column-center">
+     <h6>Target speaker</h6>
+     <audio src="audio/class_2_target.wav" controls preload></audio>
+   </div>
+   <div class="column-right">
+     <h6>Output</h6>
+     <audio src="audio/class_2_output.wav" controls preload></audio>
    </div>
 </div>
