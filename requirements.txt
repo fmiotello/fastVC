@@ -118,7 +118,7 @@ transformers==4.5.1
 typing-extensions==3.7.4.3
 umap-learn==0.5.1
 Unidecode==1.2.0
-urllib3==1.26.4
+urllib3==1.26.5
 visdom==0.1.8.9
 webrtcvad==2.0.10; platform_system != "Windows"
 websocket-client==0.59.0
