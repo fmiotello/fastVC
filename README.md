@@ -12,13 +12,13 @@ FastVC is a fast and efficient, non-parallel and any-to-any *voice conversion (V
 
 The ASR is based on [Wav2vec 2.0](https://arxiv.org/pdf/2006.11477.pdf) and is used to transcribe the speech from a source speaker. The TTS is based on [SV2TTS](https://arxiv.org/pdf/1806.04558.pdf) and is used to generate the output speech from a target speaker embedding.
 
-For a more detailed explanation checkout [the paper of our project](). A demo page is available [here](https://fmiotello.github.io/fastVC).
+For a more detailed explanation checkout [the paper of our project](https://github.com/fmiotello/fastVC/files/6710459/paper.pdf). A demo page is available [here](https://fmiotello.github.io/fastVC).
 
 ## Installation & usage
 
 The software was implemented using `python 3.9.4`
 
-1. Clone the repository (`git clone https://github.com/fmiotello/fastVC.git`) and enter the directory (`cd fastVC`) 
+1. Clone the repository (`git clone https://github.com/fmiotello/fastVC.git`) and enter the directory (`cd fastVC`)
 2. (*optional*) Create virtual env and activate it: `python -m venv env` and `source env/bin/activate` (if using macOS/Linux) or `.\env\Scripts\activate` (if using Windows)
 3. Upgrade pip: `python -m pip install --upgrade pip`
 4. Install dependencies: `python -m pip install -r requirements.txt`
