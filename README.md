@@ -12,7 +12,7 @@ FastVC is a fast and efficient, non-parallel and any-to-any *voice conversion (V
 
 The ASR is based on [Wav2vec 2.0](https://arxiv.org/pdf/2006.11477.pdf) and is used to transcribe the speech from a source speaker. The TTS is based on [SV2TTS](https://arxiv.org/pdf/1806.04558.pdf) and is used to generate the output speech from a target speaker embedding.
 
-For a more detailed explanation checkout [the paper of our project](https://github.com/fmiotello/fastVC/files/6710459/paper.pdf). A demo page is available [here](https://fmiotello.github.io/fastVC).
+For a more detailed explanation checkout [the paper of our project](https://github.com/fmiotello/fastVC/files/6711123/paper.pdf). A demo page is available [here](https://fmiotello.github.io/fastVC).
 
 ## Installation & usage
 
