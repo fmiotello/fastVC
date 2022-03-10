@@ -22,7 +22,7 @@ The software was implemented using `python 3.9.4`
 2. (*optional*) Create virtual env and activate it: `python -m venv env` and `source env/bin/activate` (if using macOS/Linux) or `.\env\Scripts\activate` (if using Windows)
 3. Upgrade pip: `python -m pip install --upgrade pip`
 4. Install dependencies: `python -m pip install -r requirements.txt`
-5. Download the [pretrained models](https://github.com/blue-fish/Real-Time-Voice-Cloning/releases/download/v1.0/pretrained.zip) and put them in the correct directories:
+5. Download the pretrained models ([encoder](https://drive.google.com/file/d/1q8mEGwCkFy23KZsinbuvdKAQLqNKbYf1/view?usp=sharing), [synthesizer](https://drive.google.com/file/d/1EqFMIbvxffxtjiVrtykroF6_mUh-5Z3s/view?usp=sharing), [vocoder](https://drive.google.com/file/d/1cf2NO6FtI0jDuy8AV3Xgn6leO6dHjIgu/view?usp=sharing)) and put them in the correct directories:
   ````
   ./src/encoder/saved_models/pretrained.pt
   ./src/synthesizer/saved_models/pretrained/pretrained.pt
